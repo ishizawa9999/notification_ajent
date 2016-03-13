@@ -1,0 +1,19 @@
+package functions;
+
+public class AllInOne {
+
+	
+	/**
+	 * 条件 明るさが0．3以下ならfalse
+	 */
+	private double condition = 0.3;
+	
+	/**
+	 * 条件判定用関数
+	 * @param recievedCondition
+	 * @return
+	 */
+	public boolean judge(double recievedCondition){
+		return recievedCondition >= condition;
+	}
+}

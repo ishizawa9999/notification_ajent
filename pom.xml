@@ -90,7 +90,6 @@
 			<version>2.2.0</version> <!-- or whatever the latest version is -->
 		</dependency>
 
-
 		<dependency>
            <groupId>org.twitter4j</groupId>
            <artifactId>twitter4j-core</artifactId>
