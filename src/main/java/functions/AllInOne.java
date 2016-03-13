@@ -8,6 +8,7 @@ public class AllInOne {
 	 */
 	private double condition = 0.3;
 	
+	public static String TwitterName = "@kyabe";
 	/**
 	 * 条件判定用関数
 	 * @param recievedCondition

@@ -38,8 +38,6 @@ public class Write {
 	            ex.printStackTrace();
 	        }
 
-		   new Read().readCsv(id);
-
 		   return Boolean.valueOf(param);
 	}
 }

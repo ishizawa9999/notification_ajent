@@ -9,6 +9,7 @@ import org.apache.wicket.request.handler.TextRequestHandler;
 import org.apache.wicket.util.string.StringValue;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import functions.AllInOne;
 import twitter4j.TwitterException;
 import utils.Twitter4JUtil;
 
@@ -50,11 +51,11 @@ public class NotificationAPI extends WebPage{
 				return returning = String.format(returningFormat, "false",
 						String.format(unsatisfiedParameterMessage,necessaryPageParameter));
 			
-			//ツイートしたいメッセージを取得
+			//通知したいユーザ名
 			StringValue name = pageParameters.getParameterValue(necessaryPageParameter);
 			
 			//TODO nameの状況をCSVから取得する
-			boolean condition = true;
+			boolean condition = new Read().readCsv(name.toString());
 			
 			//状況を通知
 			String tweetMsg = "";
@@ -64,20 +65,21 @@ public class NotificationAPI extends WebPage{
 			}else{
 				tweetMsg = name + " お弁当を忘れてますよ！";
 			}
+
 			
-			// メッセージをツイートする
-			Twitter4JUtil twitter =new Twitter4JUtil();
-			try {
-				twitter.initialize();
-				twitter.postTweet(tweetMsg);
-				returning = String.format(returningFormat, "true",successMessage);
-			} catch (TwitterException e) {
-				//初期化失敗時
-				e.printStackTrace();
-				return returning = String.format(returningFormat, "false",failInitTwitterClientMessage);
-			}	
+//			// メッセージをツイートする
+//			Twitter4JUtil twitter =new Twitter4JUtil();
+//			try {
+//				twitter.initialize();
+//				twitter.postTweet(tweetMsg);
+//				returning = String.format(returningFormat, "true",successMessage);
+//			} catch (TwitterException e) {
+//				//初期化失敗時
+//				e.printStackTrace();
+//				return returning = String.format(returningFormat, "false",failInitTwitterClientMessage);
+//			}	
 			
-			returning = String.format(returningFormat, "true",successMessage);
+			returning = String.format(returningFormat, "true",tweetMsg);
 		
 			return returning;
 		}

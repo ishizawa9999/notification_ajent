@@ -16,6 +16,8 @@ public class RecieveDataAPI extends WebPage{
 
 	private static final long serialVersionUID = -1698230246355292321L;
 
+	
+	
 	final String returningFormat = "{\"result\": \"%s\", \"message\": \"%s\"}";
 
 	//メッセージ
@@ -55,7 +57,9 @@ public class RecieveDataAPI extends WebPage{
 			try{
 				boolean result = new AllInOne().judge(brightness.toDouble());
 				
-				//TODO CSVへの書き込み処理 username は @kyabe
+				//CSVへの書き込み処理 
+				Write writer = new Write();
+				writer.writeCsv(AllInOne.TwitterName, String.valueOf(result));
 				
 //				if(result){
 //					returning = String.format(returningFormat, "true","閾値以上");
